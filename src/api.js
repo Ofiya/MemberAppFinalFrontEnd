@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 
-const URL = "http://localhost:3000";
+const URL = "http://redbeapi-bmere9etc3c8eva6.canadacentral-01.azurewebsites.net";
 
 
 
