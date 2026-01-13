@@ -1,5 +1,5 @@
 import Sidebar from './Sidebar'
-import NavBar from './Navbar'
+import NavBar from './NavBar'
 import { useNavigate } from 'react-router'
 import { Outlet } from "react-router-dom"
 import { useEffect } from 'react'
