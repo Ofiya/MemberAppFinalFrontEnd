@@ -1,0 +1,9 @@
+.followup_flag{
+  border-color: 1px solid black;
+  min-height: 12px;
+  max-height: 12px;
+  min-width:12px ;
+  max-width:12px ;
+  border-radius: 6px;
+  background-color: red;
+}

@@ -1,0 +1,15 @@
+/* .rank_search_table_inner {
+    border: 1px solid black;
+    height: 250px;
+    overflow-y: hidden;
+    position: sticky;
+    display: none;
+} */
+
+
+#role-search:focus + .rank_search_table_inner {
+    display: block;
+}
+
+
+
