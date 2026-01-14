@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 
-const URL = "https://membe.cccredemptionwpg.org";
+const URL = import.meta.env.VITE_API_URL
 
 
 
@@ -19,8 +19,6 @@ export async function getUsers() {
         throw new Error("Could not fetch members");
     }
 }
-
-
 
 
 export async function getMembers(dataLimit, page) {
