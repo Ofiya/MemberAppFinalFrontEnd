@@ -28,6 +28,7 @@ const Members = () => {
     
     const [open, setOpen] = useState(false);
     const [mamberOpen, setMemberOpen] = useState(false); 
+    const [detailOpen, setDetailOpen] = useState(false);
     const [members, setMembers] = useState([])
 
     const [messageOpen, setMessageOpen] = useState(false)
@@ -53,6 +54,7 @@ const Members = () => {
     
     // handle modal state 
     const closeModal = () => setMemberOpen(false);
+    const closeDetailModal = () => setDetailOpen(false)
     
 
     
@@ -183,7 +185,7 @@ const Members = () => {
 
     const [editedMemberDetail, setEditedMemberDetail] = useState({})
     const handleEditDetail = (uuid) => {
-        setMemberOpen(true)
+        setDetailOpen(true)
         setEditedMemberDetail(uuid)
     }
     
@@ -389,7 +391,7 @@ const Members = () => {
                                     filteredMembers.map((member) => {
                                         return(
                                             
-                                            <tr className="border-b border-gray-200  cursor-pointer hover:bg-blue-50" role="button" tabIndex={0} onClick={() => handleEditDetail(member.uuid)}    key={member._id}>
+                                            <tr className="border-b border-gray-200  cursor-pointer hover:bg-blue-50" role="button"  onClick={() => handleEditDetail(member.uuid)}    key={member._id}>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.name?.first_name} {member.name?.last_name}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.gender}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.dob?.slice(0, 10)}</td>
@@ -468,12 +470,12 @@ const Members = () => {
                 <MemberModal onClose={closeModal} />
             </AppDialog>
             <AppDialog
-                isOpen={mamberOpen}
-                onClose={() => setMemberOpen(false)}
+                isOpen={detailOpen}
+                onClose={() => setDetailOpen(false)}
             >
 
                 <MemberDetail 
-                    onClose={closeModal}
+                    onClose={closeDetailModal}
                     editedMember={editedMemberDetail}
                     openMessage={() => setMessageOpen(true)}
                     closeMessage={() => setMessageOpen(false)}
