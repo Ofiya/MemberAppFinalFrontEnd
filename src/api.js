@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 
-const URL = "http://redbeapi-bmere9etc3c8eva6.canadacentral-01.azurewebsites.net";
+const URL = "https://membe.cccredemptionwpg.org";
 
 
 
