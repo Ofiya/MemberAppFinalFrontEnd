@@ -35,6 +35,28 @@ export async function getMembers(dataLimit, page) {
 }
 
 
+// import excel file 
+export async function uploadFile(formData, onProgress){
+    const res = await axios.post(`${URL}/members/import_excel`, formData)
+    
+    onUploadProgress: (progressEvent) => {
+
+        if (!progressEvent.total) return;
+
+        const percent = Math.round(
+          (progressEvent.loaded * 100) / progressEvent.total
+        );
+        
+        if (onProgress) {
+          onProgress(percent);
+        }
+        
+    }
+    
+    return res
+}
+
+
 
 // calling axios to create member 
 
