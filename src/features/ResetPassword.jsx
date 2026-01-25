@@ -7,6 +7,7 @@ import { changePassword } from "../api";
 
 const ResetPassword = () => {
 
+    const [showPassword, setShowPassword] = useState(false);
 
     const params = new URLSearchParams(window.location.search);
     const ptoken = params.get("token");
@@ -65,12 +66,12 @@ const ResetPassword = () => {
 
                 <div className="mb-6">
                     <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="email">New Password</label>
-                    <input name="password" autoComplete="" minLength={8} onChange={handleChange} type="password" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter new password" required />
+                    <input name="password" autoComplete="" minLength={8} onChange={handleChange} type={showPassword?"text":"password"} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter new password" required />
                 </div>
 
                 <div className="mb-6">
                     <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="password">Confirm New Password</label>
-                    <input name="password2" autoComplete="" minLength={8} onChange={handleChange} type="password" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="confirm new password" required />
+                    <input name="password2" autoComplete="" minLength={8} onChange={handleChange} type={showPassword?"text":"password"} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="confirm new password" required />
                 </div>
 
                 <button type="submit" onClick={() => setLoading(true)} className={ loading? "btn-loading w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2": "w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"}  >

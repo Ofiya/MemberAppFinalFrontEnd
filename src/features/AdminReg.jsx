@@ -12,6 +12,8 @@ const AdminReg = () => {
     const [message, setMessage] = useState("")
     const closeMessage = () => setMessageOpen(false)
 
+    const [showPassword, setShowPassword] = useState(false)
+
     const [admin, setAdmin] = useState({
         fullname:"Admin",
         email: "",
@@ -100,14 +102,18 @@ const AdminReg = () => {
                     <div className="mt-0 text-left text-sm text-gray-300">
                         <p className="text-grey-600">Minimum of 8 characters*</p>
                     </div>
-                    <input name="password" minLength={8} autoComplete="password"  onChange={handleRegChange} type="password" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter your password" required />
+                    <input name="password" minLength={8} autoComplete="password"  onChange={handleRegChange} type={showPassword?"text":"password"} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter your password" required />
                 </div>
                 <div className="mb-6">
                     <label className="block text-gray-700 text-sm font-semibold mb-0" htmlFor="password">Password</label>
                     <div className="mt-0 text-left text-sm text-gray-300">
                         <p className="text-grey-600">Minimum of 8 characters*</p>
                     </div>
-                    <input name="password2" minLength={8} autoComplete="password"  onChange={handleRegChange} type="password" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Confirm your password" required />
+                    <input name="password2" minLength={8} autoComplete="password"  onChange={handleRegChange} type={showPassword?"text":"password"} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Confirm your password" required />
+                </div>
+                <div className="mb-6 flex flex-row align-baseline  ">
+                    <label className="block text-gray-400 text-sm font-semibold mb-2" htmlFor="showpass">Show</label>
+                    <input name="showpass"   type="checkbox" onClick={() => showPassword? setShowPassword(false): setShowPassword(true)} className=" px-3 py-2 mb-2 ml-4 size-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 " placeholder="Enter your password" required />
                 </div>
 
                 <button type="submit" className="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">

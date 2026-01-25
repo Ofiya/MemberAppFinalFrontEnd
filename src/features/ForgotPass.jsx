@@ -13,6 +13,8 @@ const ForgotPass = () => {
 
     const [loading, setLoading] = useState(false);
     const [token, setToken] = useState(null);
+
+    
     
     
    
@@ -43,6 +45,7 @@ const ForgotPass = () => {
                     <h1 className="text-3xl font-bold text-indigo-700">CCC Redemption Parish</h1>
                     <p className="text-gray-600">Forgot Password</p>
                 </div>
+                
 
                 <div className="mb-6">
                     <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="email">Email Address(registered email address)</label>

@@ -9,6 +9,8 @@ const AddUserModal = ({onClose, openMessage, closeMessage, passMatchMessage, ema
     
     
     const currentUser = getUserIdFromToken()
+
+    const [showPassword, setShowPassword] = useState(false);
     
 
     const [loading, setLoading] = useState(false);
@@ -92,11 +94,15 @@ const AddUserModal = ({onClose, openMessage, closeMessage, passMatchMessage, ema
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Password*</label>
-                            <input onChange={handleChange} name="password" autoComplete="current-password" required  minLength="8" type="password" id="user-password-input" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter password" />
+                            <input onChange={handleChange} name="password" autoComplete="current-password" required  minLength="8" type={showPassword?"text":"password"} id="user-password-input" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter password" />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Password*</label>
-                            <input onChange={handleChange}  name="password2" autoComplete="current-password" required  minLength="8" type="password" id="user-confirm-password" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Confirm password" />
+                            <input onChange={handleChange}  name="password2" autoComplete="current-password" required  minLength="8" type={showPassword?"text":"password"} id="user-confirm-password" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Confirm password" />
+                        </div>
+                        <div className="mb-6 flex flex-row align-baseline  ">
+                            <label className="block text-gray-400 text-sm font-semibold mb-2" htmlFor="showpass">Show</label>
+                            <input name="showpass"   type="checkbox" onClick={() => showPassword? setShowPassword(false): setShowPassword(true)} className=" px-3 py-2 mb-2 ml-4 size-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 " placeholder="Enter your password" required />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Role*</label>
