@@ -81,7 +81,7 @@ const Attendance = () => {
 
         }
         fetchMembers();
-    }, [page])
+    }, [page || contentCount])
 
 
     //  handles filtered members 
@@ -108,7 +108,7 @@ const Attendance = () => {
 
         }
         fetchAttendance();
-    }, [])
+    }, [contentCount])
     
 
 
