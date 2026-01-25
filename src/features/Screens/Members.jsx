@@ -72,7 +72,7 @@ const Members = () => {
             
         }
         fetchHousehold();
-    }, [contentCount])
+    }, [])
 
 
     // useEffect fetch members from the api
@@ -94,7 +94,7 @@ const Members = () => {
 
         const intervalId = setInterval(fetchMembers(), 3000); 
         return () => clearInterval(intervalId);
-    }, [contentCount])
+    }, [])
 
 
     // get welfare members from api      
@@ -110,7 +110,7 @@ const Members = () => {
             
         }
         fetchWelfare();
-    }, [contentCount])
+    }, [])
  
 
     // handles row per page count 
