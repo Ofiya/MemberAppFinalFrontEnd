@@ -1,5 +1,9 @@
 import { getHouseholds } from "../../api"
 import { useState, useEffect } from "react"
+import AppDialog from "../../components/modals/AppDialog";
+import HouseHoldModal from "../../components/modals/HouseholdModal";
+import MessageDialog from "../../components/modals/MessageDialog";
+import MessageModal from "../../components/modals/MessageModal";
 
 
 
@@ -10,6 +14,12 @@ const Household = () => {
     const [household, setHousehold] = useState([]);
     const [search, setSearch] = useState("")
 
+    const [messageOpen, setMessageOpen] = useState(false);
+    const [message, setMessage] = useState("");
+    const closeMessage = () => setMessageOpen(false)
+
+    const [householdOpen, setHouseholdOpen] = useState(false);
+    const closeModal = () => setHouseholdOpen(false);
 
     useEffect(() => {
         async function fetchHousehold() {
@@ -37,7 +47,7 @@ const Household = () => {
                     <h2 className="text-2xl font-bold text-gray-800">Households</h2>
                     <p className="text-gray-600">Manage church households and family units</p>
                 </div>
-                <button id="add-household-btn" className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md flex items-center">
+                <button id="add-household-btn" onClick={() => setHouseholdOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md flex items-center">
                     <i className="fas fa-plus mr-2"></i> Add Household
                 </button>
             </div>
@@ -100,6 +110,32 @@ const Household = () => {
             <button id="add-household-floating-btn" className="floating-button md:hidden fixed bottom-6 right-6 w-14 h-14 bg-indigo-600 text-white rounded-full shadow-lg flex items-center justify-center">
                 <i className="fas fa-plus text-xl"></i>
             </button>
+
+            <MessageDialog
+                isOpen={messageOpen}
+                onClose={() => setMessageOpen(false)}
+            >
+
+                <MessageModal 
+                    onClose={closeMessage}
+                    message={message}  
+                />
+
+            </MessageDialog>
+
+            <AppDialog
+                isOpen={householdOpen}
+                onClose={() => setHouseholdOpen(false)}
+            >
+
+                <HouseHoldModal
+                    onClose={closeModal}
+                    openMessage={() => setMessageOpen(true)}
+                    closeMessage={() => setMessageOpen(false)}
+                    successMessage={() => setMessage("Member added successfully")}
+                    existingHouse={() => setMessage("Household already exist")} 
+                />
+            </AppDialog>
         </div>
     )
 }

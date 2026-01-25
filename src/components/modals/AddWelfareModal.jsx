@@ -3,7 +3,7 @@ import { createWelfareMember } from "../../api";
 import AppDialog from "./AppDialog";
 
 
-const AddWelfareModal = ({onClose, openMessage, closeMessage, successMessage}) => {
+const AddWelfareModal = ({onClose, openMessage, closeMessage, successMessage, existingMember}) => {
 
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
@@ -12,19 +12,30 @@ const AddWelfareModal = ({onClose, openMessage, closeMessage, successMessage}) =
     async function handleSubmit(e) {
         e.preventDefault()
 
-        
-        let memberObject = {
-            first_name:firstname,
-            last_name:lastname,
-        }
+        try {
+            
+            let memberObject = {
+                first_name:firstname,
+                last_name:lastname,
+            }
+    
+            await createWelfareMember(memberObject)
+            
+            openMessage()
+            successMessage()
+            setTimeout(() => {
+                closeMessage()
+            }, 3000)
 
-        await createWelfareMember(memberObject)
-        
-        openMessage()
-        successMessage()
-        setTimeout(() => {
-            closeMessage()
-        }, 3000)
+        } catch (err) {
+            openMessage()
+
+            existingMember()
+
+            setTimeout(() => {
+                closeMessage()
+            }, 3000)
+        }
     }
 
 

@@ -102,7 +102,7 @@ const Welfare = () => {
             </button>
             <MessageDialog
                 isOpen={messageOpen}
-                onClose={() => setMemberOpen(false)}
+                onClose={() => setMessageOpen(false)}
             >
 
                 <MessageModal 
@@ -122,6 +122,7 @@ const Welfare = () => {
                     openMessage={() => setMessageOpen(true)}
                     closeMessage={() => setMessageOpen(false)}
                     successMessage={() => setMessage("Member added successfully")}
+                    existingMember={() => setMessage("Member already exist")} 
                 />
             </AppDialog>
         </div>

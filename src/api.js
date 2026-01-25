@@ -156,6 +156,15 @@ export async function getWelfareMember() {
     }
 }
 
+
+// add household member 
+export async function createHouseholdMember(member) {
+
+    const response = await axios.post(`${URL}/household/add_household`, member)
+    
+    return response
+}
+
 // get all households
 export async function getHouseholds() {
 
