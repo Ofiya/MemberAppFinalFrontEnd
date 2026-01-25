@@ -92,7 +92,7 @@ const Members = () => {
         }
         fetchMembers();
 
-        const intervalId = setInterval(fetchData, 3000); 
+        const intervalId = setInterval(fetchMembers(), 3000); 
         return () => clearInterval(intervalId);
     }, [])
 
