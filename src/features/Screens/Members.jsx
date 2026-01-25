@@ -91,7 +91,10 @@ const Members = () => {
 
         }
         fetchMembers();
-    }, [page || dataLimit])
+
+        const intervalId = setInterval(fetchData, 3000); 
+        return () => clearInterval(intervalId);
+    }, [])
 
 
     // get welfare members from api      
@@ -299,8 +302,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{householdMembers.map((householdItem) => {if(householdItem.uuid === member.household ){return(householdItem.household?.last_name)}  })}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.phone_number}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.email.toLowerCase()}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3")? member.immigration_status : "Resctricted"}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3"|| "Superuser")? member.immigration_status : "Resctricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3"|| "Superuser")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.occupation}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.address}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
@@ -333,8 +336,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{householdMembers.map((householdItem) => {if(householdItem.uuid === member.household ){return(householdItem.household?.last_name)}  })}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.phone_number}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.email.toLowerCase()}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3")? member.immigration_status : "Resctricted"}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3"||"Superuser")? member.immigration_status : "Resctricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3"|| "Superuser")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.occupation}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.address}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
@@ -367,8 +370,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{householdMembers.map((householdItem) => {if(householdItem.uuid === member.household ){return(householdItem.household?.last_name)}  })}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.phone_number}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.email.toLowerCase()}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3")? member.immigration_status : "Resctricted"}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3"||"Superuser")? member.immigration_status : "Resctricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3"||"Superuser")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.occupation}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.address}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
@@ -401,8 +404,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{householdMembers.map((householdItem) => {if(householdItem.uuid === member.household ){return(householdItem.household?.last_name)}  })}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.phone_number}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.email.toLowerCase()}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3")? member.immigration_status : "Resctricted"}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3"||"Superuser")? member.immigration_status : "Resctricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3"||"Superuser")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.occupation}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.address}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
