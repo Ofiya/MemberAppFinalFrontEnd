@@ -114,7 +114,7 @@ const Dashboard = () => {
             return diffDays >= 0 && diffDays <= days;
         });
     };
-    const upcomingBirthdays = getUpcomingBirthdays(members, 5);
+    const upcomingBirthdays = getUpcomingBirthdays(members, 8);
 
     
 
