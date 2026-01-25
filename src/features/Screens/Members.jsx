@@ -133,22 +133,22 @@ const Members = () => {
     };
     
 
-    useEffect(() =>{
+    
 
-        //  handles member filter 
-        const filteredMembers = members.filter(member => 
-            (member.name?.first_name.toLowerCase().includes(search.toLowerCase()))
-        );
-    
-        const genderFilter = members.filter(member =>
-            (member.gender.toLowerCase() === genderSearch.toLowerCase())
-             
-        )
-    
-        const householdFilter = members.filter(member => 
-            (member.household === householdSearch)
-        )
-    }, [])
+    //  handles member filter 
+    const filteredMembers = members.filter(member => 
+        (member.name?.first_name.toLowerCase().includes(search.toLowerCase()))
+    );
+
+    const genderFilter = members.filter(member =>
+        (member.gender.toLowerCase() === genderSearch.toLowerCase())
+            
+    )
+
+    const householdFilter = members.filter(member => 
+        (member.household === householdSearch)
+    )
+   
 
     
     
