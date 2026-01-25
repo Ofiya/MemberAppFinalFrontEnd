@@ -72,7 +72,7 @@ const Members = () => {
             
         }
         fetchHousehold();
-    }, [])
+    }, [data])
 
 
     // useEffect fetch members from the api
@@ -91,7 +91,7 @@ const Members = () => {
 
         }
         fetchMembers();
-    }, [page])
+    }, [page || data])
 
 
     // get welfare members from api      
@@ -107,7 +107,7 @@ const Members = () => {
             
         }
         fetchWelfare();
-    }, [])
+    }, [data])
  
 
     // handles row per page count 
@@ -133,19 +133,22 @@ const Members = () => {
     };
     
 
-    //  handles member filter 
-    const filteredMembers = members.filter(member => 
-        (member.name?.first_name.toLowerCase().includes(search.toLowerCase()))
-    );
+    useEffect(() =>{
 
-    const genderFilter = members.filter(member =>
-        (member.gender.toLowerCase() === genderSearch.toLowerCase())
-         
-    )
-
-    const householdFilter = members.filter(member => 
-        (member.household === householdSearch)
-    )
+        //  handles member filter 
+        const filteredMembers = members.filter(member => 
+            (member.name?.first_name.toLowerCase().includes(search.toLowerCase()))
+        );
+    
+        const genderFilter = members.filter(member =>
+            (member.gender.toLowerCase() === genderSearch.toLowerCase())
+             
+        )
+    
+        const householdFilter = members.filter(member => 
+            (member.household === householdSearch)
+        )
+    }, [filteredMembers || genderFilter || housholdFilter])
 
     
     
