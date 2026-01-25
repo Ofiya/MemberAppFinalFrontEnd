@@ -92,7 +92,11 @@ export async function getMemberDetail(uuid) {
     return response
 }
 
-
+// delete a member 
+export async function deleteMember(uuid){
+    const res = await axios.post(`${URL}/members/delete_member/${uuid}`)
+    return res
+}
 
 
 
