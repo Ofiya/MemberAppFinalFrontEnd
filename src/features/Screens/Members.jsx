@@ -72,7 +72,7 @@ const Members = () => {
             
         }
         fetchHousehold();
-    }, [data])
+    }, [])
 
 
     // useEffect fetch members from the api
@@ -91,7 +91,7 @@ const Members = () => {
 
         }
         fetchMembers();
-    }, [page || data])
+    }, [page || dataLimit])
 
 
     // get welfare members from api      
@@ -107,7 +107,7 @@ const Members = () => {
             
         }
         fetchWelfare();
-    }, [data])
+    }, [])
  
 
     // handles row per page count 
@@ -148,7 +148,7 @@ const Members = () => {
         const householdFilter = members.filter(member => 
             (member.household === householdSearch)
         )
-    }, [filteredMembers || genderFilter || housholdFilter])
+    }, [])
 
     
     
