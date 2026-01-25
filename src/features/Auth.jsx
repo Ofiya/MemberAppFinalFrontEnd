@@ -74,7 +74,7 @@ const Auth = () => {
 
                 <div className="mb-6 flex flex-row align-baseline  ">
                     <label className="block text-gray-400 text-sm font-semibold mb-2" htmlFor="password">Show</label>
-                    <input name="showpass"   type="checkbox" onClick={() => showPassword? setShowPassword(false): setShowPassword(true)} className=" px-3 py-2 mb-2 ml-4 size-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 " placeholder="Enter your password" required />
+                    <input name="showpass"   type="checkbox" onClick={() => showPassword? setShowPassword(false): setShowPassword(true)} className=" px-3 py-2 mb-2 ml-4 size-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 " />
                 </div>
 
                 <button type="submit" className="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">

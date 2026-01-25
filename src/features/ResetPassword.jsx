@@ -69,9 +69,13 @@ const ResetPassword = () => {
                     <input name="password" autoComplete="" minLength={8} onChange={handleChange} type={showPassword?"text":"password"} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter new password" required />
                 </div>
 
-                <div className="mb-6">
+                <div className="mb-2">
                     <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor="password">Confirm New Password</label>
                     <input name="password2" autoComplete="" minLength={8} onChange={handleChange} type={showPassword?"text":"password"} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="confirm new password" required />
+                </div>
+                <div className="mb-6 flex flex-row align-baseline  ">
+                    <label className="block text-gray-400 text-sm font-semibold mb-2" htmlFor="password">Show</label>
+                    <input name="showpass"   type="checkbox" onClick={() => showPassword? setShowPassword(false): setShowPassword(true)} className=" px-3 py-2 mb-2 ml-4 size-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 " />
                 </div>
 
                 <button type="submit" onClick={() => setLoading(true)} className={ loading? "btn-loading w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2": "w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"}  >

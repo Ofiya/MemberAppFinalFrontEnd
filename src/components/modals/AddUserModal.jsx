@@ -102,7 +102,7 @@ const AddUserModal = ({onClose, openMessage, closeMessage, passMatchMessage, ema
                         </div>
                         <div className="mb-6 flex flex-row align-baseline  ">
                             <label className="block text-gray-400 text-sm font-semibold mb-2" htmlFor="showpass">Show</label>
-                            <input name="showpass"   type="checkbox" onClick={() => showPassword? setShowPassword(false): setShowPassword(true)} className=" px-3 py-2 mb-2 ml-4 size-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 " placeholder="Enter your password" required />
+                            <input name="showpass"   type="checkbox" onClick={() => showPassword? setShowPassword(false): setShowPassword(true)} className=" px-3 py-2 mb-2 ml-4 size-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 "/>
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Role*</label>
