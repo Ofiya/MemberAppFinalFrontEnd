@@ -306,8 +306,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.marital_status}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{welfareMembers.map((welfareItem) => {if(welfareItem.uuid === member.assigned_welfare_member ){return(welfareItem.name?.first_name)}  })}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_created.slice(0, 10)}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_updated.slice(0, 10)}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_created?.slice(0, 10)}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_updated?.slice(0, 10)}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >
                                                     <select  onChange={(e) => handleStatusChange(member.uuid,  e.target.value)} name="account_status"   id="account-status" className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                                         <option value="">Choose Action</option>
@@ -340,8 +340,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.marital_status}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{welfareMembers.map((welfareItem) => {if(welfareItem.uuid === member.assigned_welfare_member ){return(welfareItem.name?.first_name)}  })}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_created.slice(0, 10)}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_updated.slice(0, 10)}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_created?.slice(0, 10)}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_updated?.slice(0, 10)}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >
                                                     <select  onChange={(e) => handleStatusChange(member.uuid,  e.target.value)} name="account_status"   id="account-status" className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                                         <option value="">Choose Action</option>
@@ -374,8 +374,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.marital_status}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{welfareMembers.map((welfareItem) => {if(welfareItem.uuid === member.assigned_welfare_member ){return(welfareItem.name?.first_name)}  })}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_created.slice(0, 10)}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_updated.slice(0, 10)}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_created?.slice(0, 10)}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.date_updated?.slice(0, 10)}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >
                                                     <select  onChange={(e) => handleStatusChange(member.uuid,  e.target.value)} name="account_status"   id="account-status" className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                                         <option value="">Choose Action</option>
