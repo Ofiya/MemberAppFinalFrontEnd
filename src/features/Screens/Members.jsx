@@ -36,7 +36,7 @@ const Members = () => {
     const closeMessage = () => setMessageOpen(false)
     
     
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
     const [dataLimit, setDataLimit] = useState(10)
     const [welfareMembers, setWelfareMembers] = useState([])
@@ -49,6 +49,7 @@ const Members = () => {
     const [genderSearch, setGenderSearch] = useState("")
     const [householdSearch, setHouseholdSearch] = useState("")
     const [contentCount, setContentCount] = useState("")
+    
     //filter useState ends ---
     
     
@@ -91,10 +92,7 @@ const Members = () => {
 
         }
         fetchMembers();
-
-        const intervalId = setInterval(fetchMembers(), 3000); 
-        return () => clearInterval(intervalId);
-    }, [])
+    }, [page, dataLimit])
 
 
     // get welfare members from api      
@@ -115,10 +113,12 @@ const Members = () => {
 
     // handles row per page count 
     const handleCountChange = (event) => {
+        let rowCount = Number(event.target.value)
+        setContentCount(rowCount);
 
-        setContentCount(event.target.value);
+        setDataLimit(rowCount)
 
-        setDataLimit(event.target.value)
+        setPage(1)
     };
 
 
@@ -136,8 +136,6 @@ const Members = () => {
     };
     
 
-    
-
     //  handles member filter 
     const filteredMembers = members.filter(member => 
         (member.name?.first_name.toLowerCase().includes(search.toLowerCase()))
@@ -145,13 +143,12 @@ const Members = () => {
 
     const genderFilter = members.filter(member =>
         (member.gender.toLowerCase() === genderSearch.toLowerCase())
-            
+         
     )
 
     const householdFilter = members.filter(member => 
         (member.household === householdSearch)
     )
-   
 
     
     
@@ -302,8 +299,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{householdMembers.map((householdItem) => {if(householdItem.uuid === member.household ){return(householdItem.household?.last_name)}  })}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.phone_number}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.email.toLowerCase()}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3"|| "Superuser")? member.immigration_status : "Resctricted"}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3"|| "Superuser")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3")? member.immigration_status : "Resctricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.occupation}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.address}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
@@ -336,8 +333,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{householdMembers.map((householdItem) => {if(householdItem.uuid === member.household ){return(householdItem.household?.last_name)}  })}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.phone_number}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.email.toLowerCase()}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3"||"Superuser")? member.immigration_status : "Resctricted"}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3"|| "Superuser")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3")? member.immigration_status : "Resctricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.occupation}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.address}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
@@ -370,8 +367,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{householdMembers.map((householdItem) => {if(householdItem.uuid === member.household ){return(householdItem.household?.last_name)}  })}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.phone_number}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.email.toLowerCase()}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3"||"Superuser")? member.immigration_status : "Resctricted"}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3"||"Superuser")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3")? member.immigration_status : "Resctricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.occupation}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.address}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
@@ -404,8 +401,8 @@ const Members = () => {
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{householdMembers.map((householdItem) => {if(householdItem.uuid === member.household ){return(householdItem.household?.last_name)}  })}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.phone_number}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.email.toLowerCase()}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3"||"Superuser")? member.immigration_status : "Resctricted"}</td>
-                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3"||"Superuser")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider"  >{(currentUser.role === "3")? member.immigration_status : "Resctricted"}</td>
+                                                <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{ (currentUser.role === "3")? member.doc_expiry?.slice(0, 10) : "Restricted"}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.occupation}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.address}</td>
                                                 <td className="px-6 py-3 text-left text-sm font-normal text-gray-500 capitalize tracking-wider" >{member.rank}</td>
