@@ -36,7 +36,7 @@ const Members = () => {
     const closeMessage = () => setMessageOpen(false)
     
     
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [dataLimit, setDataLimit] = useState(10)
     const [welfareMembers, setWelfareMembers] = useState([])

@@ -81,7 +81,7 @@ const Attendance = () => {
 
         }
         fetchMembers();
-    }, [page])
+    }, [page, dataLimit])
 
 
     //  handles filtered members 
@@ -140,10 +140,11 @@ const Attendance = () => {
 
     // handles row per page count 
     const handleCountChange = (event) => {
+        let rowCount = Number(event.target.value)
+        setContentCount(rowCount);
 
-        setContentCount(event.target.value);
-
-        setDataLimit(event.target.value)
+        setDataLimit(rowCount)
+        setPage(1)
     };
 
 
