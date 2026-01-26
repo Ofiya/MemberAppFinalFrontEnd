@@ -3,10 +3,12 @@ import { createWelfareMember } from "../../api";
 import AppDialog from "./AppDialog";
 
 
-const AddWelfareModal = ({onClose, openMessage, closeMessage, successMessage, existingMember}) => {
+const AddWelfareModal = ({onClose, openMessage, closeMessage, successMessage, refreshWelfare}) => {
 
     const [firstname, setFirstName] = useState("");
     const [lastname, setLastName] = useState("");
+
+    
 
 
     async function handleSubmit(e) {
@@ -26,6 +28,8 @@ const AddWelfareModal = ({onClose, openMessage, closeMessage, successMessage, ex
             setTimeout(() => {
                 closeMessage()
             }, 3000)
+
+            refreshWelfare()
 
         } catch (err) {
             openMessage()

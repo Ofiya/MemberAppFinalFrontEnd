@@ -17,7 +17,9 @@ const Welfare = () => {
     const closeMessage = () => setMessageOpen(false)
     const [welfareOpen, setWelfareOpen] = useState(false);
     const closeModal = () => setWelfareOpen(false)
-        
+
+    const [welfareUpdated, setWelfareUpdated] = useState(false);
+    const refreshWelfare = () => setWelfareUpdated(true);
     useEffect(() => {
         async function fetchWelfare() {
             try {
@@ -30,7 +32,7 @@ const Welfare = () => {
             
         }
         fetchWelfare();
-    }, [])
+    }, [welfareUpdated])
 
        
     return (
@@ -122,7 +124,7 @@ const Welfare = () => {
                     openMessage={() => setMessageOpen(true)}
                     closeMessage={() => setMessageOpen(false)}
                     successMessage={() => setMessage("Member added successfully")}
-                    existingMember={() => setMessage("Member already exist")} 
+                    refreshWelfare={refreshWelfare} 
                 />
             </AppDialog>
         </div>
