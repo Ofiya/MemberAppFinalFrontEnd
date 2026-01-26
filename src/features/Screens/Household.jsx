@@ -21,6 +21,9 @@ const Household = () => {
     const [householdOpen, setHouseholdOpen] = useState(false);
     const closeModal = () => setHouseholdOpen(false);
 
+    const [householdUpdated, setHouseholdUpdated] = useState(false);
+    const refreshHousehold = () => setHouseholdUpdated(true);
+
     useEffect(() => {
         async function fetchHousehold() {
             const data = await getHouseholds();
@@ -28,7 +31,7 @@ const Household = () => {
 
         }
         fetchHousehold();
-    }, [])
+    }, [householdUpdated])
 
 
     //  handles filtered members 
@@ -133,7 +136,7 @@ const Household = () => {
                     openMessage={() => setMessageOpen(true)}
                     closeMessage={() => setMessageOpen(false)}
                     successMessage={() => setMessage("Member added successfully")}
-                    existingHouse={() => setMessage("Household already exist")} 
+                    refreshHousehold={refreshHousehold} 
                 />
             </AppDialog>
         </div>

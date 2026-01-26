@@ -2,7 +2,7 @@ import { useState } from "react"
 import AppDialog from "./AppDialog"
 import { createHouseholdMember } from "../../api"
 
-const HouseHoldModal = ({onClose, openMessage, closeMessage, successMessage, existingHouse}) => {
+const HouseHoldModal = ({onClose, openMessage, closeMessage, successMessage, refreshHousehold}) => {
     
 
     const [firstname, setFirstName] = useState("");
@@ -28,10 +28,13 @@ const HouseHoldModal = ({onClose, openMessage, closeMessage, successMessage, exi
                 closeMessage()
             }, 3000)
             
+            refreshHousehold()
+            
         } catch (err) {
-            openMessage()
+            
+            openMessage();
 
-            existingHouse()
+            existingHouse();
 
             setTimeout(() => {
                 closeMessage()
