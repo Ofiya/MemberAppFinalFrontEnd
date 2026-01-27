@@ -342,14 +342,31 @@ const Dashboard = () => {
 
         let emailContent = {
 
-            to: "meadigun@gmail.com",
+            to: " ",
             subject: "Happy Birthday",
-            message: `
-            Dear ${name.first_name} ${name.last_name},
-            CCC Redemption Parish  wishes you a 
-            Happy Birthday!,
-            May your day be filled with happiness and 
-            memorable moments.
+            html: `
+                <div style="font-family: Arial, sans-serif; text-align: center;">
+                    <h2>Happy Birthday 🎉</h2>
+
+                    <img 
+                        src="https://res.cloudinary.com/dje56ynku/image/upload/v1769553809/BIRTHDAY4-2_quzvji.png" 
+                        alt="Happy Birthday"
+                        style="width: 300px; margin: 20px 0;"
+                    />
+
+                    <p>
+                        Dear <strong>${name.first_name} ${name.last_name}</strong>,
+                    </p>
+
+                    <p>
+                        CCC Redemption Parish wishes you a Happy Birthday!
+                    </p>
+
+                    <p>
+                        May your day be filled with happiness and memorable moments.
+                    </p>
+                </div>
+            
             `,
             uuid: uuid
 
