@@ -39,6 +39,7 @@ const Auth = () => {
             sessionStorage.setItem("User", res)
         
             navigate("/dashboard")
+            window.location.reload();
             
         } else {
 
